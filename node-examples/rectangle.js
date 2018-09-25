@@ -4,10 +4,7 @@ module.exports = (x, y, callback) => {
       () =>
         callback(
           new Error(
-            "Rectangle dimensions should be greater than zero: l = " +
-              x +
-              ", and b = " +
-              y
+            `Rectangle dimensions should be greater than zero: l = ${x}, and b = ${y}`
           ),
           null
         ),

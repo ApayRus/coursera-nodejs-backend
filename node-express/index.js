@@ -12,8 +12,12 @@ app.use(morgan("dev"));
 app.use(bodyParser.json());
 
 const dishRouter = require("./routes/dishRouter");
+const promoRouter = require("./routes/promoRouter");
+const leaderRouter = require("./routes/leaderRouter");
 
 app.use("/dishes", dishRouter);
+app.use("/promotions", promoRouter);
+app.use("/", leaderRouter);
 
 const server = http.createServer(app);
 

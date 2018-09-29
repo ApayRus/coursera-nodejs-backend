@@ -1,6 +1,5 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 
 const Dishes = require("../models/dishes");
 
@@ -100,7 +99,7 @@ dishRouter
       )
       .catch(err => next(err));
   });
-
+/// *** COMMENTS ***///
 dishRouter
   .route("/:dishId/comments")
   .get((req, res, next) => {

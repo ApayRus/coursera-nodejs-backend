@@ -17,8 +17,9 @@ var authenticate = require("./authenticate");
 var mongoose = require("mongoose");
 var session = require("express-session");
 var FileStore = require("session-file-store")(session);
+var config = require("./config");
 
-const url = "mongodb://localhost:27017/conFusion";
+const url = config.mongoUrl;
 const connect = mongoose.connect(url);
 connect.then(
   db => {
@@ -45,20 +46,6 @@ app.use(passport.session());
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
-
-function auth(req, res, next) {
-  console.log(req.user);
-
-  if (!req.user) {
-    var err = new Error("You are not authenticated!");
-    err.status = 403;
-    next(err);
-  } else {
-    next();
-  }
-}
-
-app.use(auth);
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
